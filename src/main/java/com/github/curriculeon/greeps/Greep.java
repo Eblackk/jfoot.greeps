@@ -24,12 +24,14 @@ public class Greep extends Creature {
     @Override
     protected void behave() {
         if (isCarryingTomato()) {
-            if (isAtShip()) {
-                dropTomato();
-            } else if (isAtWater()) {
-                turnRandomDegrees(15, 90);
-            } else {
-                turnTowardsHome(30);
+            if (!isWaitingToAssist()) {
+                if (isAtShip()) {
+                    dropTomato();
+                } else if (isAtWater()) {
+                    turnRandomDegrees(15, 90);
+                } else {
+                    turnTowardsHome(30);
+                }
             }
         }
         if (isWaitingForAssistance()) {
@@ -37,7 +39,7 @@ public class Greep extends Creature {
         }
         if (isAtWater() || isAtWorldEdge()) {
             turnRandomDegrees(15, 90);
-        }
+        } //if i have tomato assist loading greep
 
         move();
 
