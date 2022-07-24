@@ -32,6 +32,10 @@ public class Greep extends Creature {
                 } else {
                     turnTowardsHome(30);
                 }
+            } else {
+                if (isWaitingToAssist()) {
+                    loadTomato();
+                }
             }
         }
         if (isWaitingForAssistance()) {
