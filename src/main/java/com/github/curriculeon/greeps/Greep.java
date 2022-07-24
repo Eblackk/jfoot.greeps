@@ -26,12 +26,23 @@ public class Greep extends Creature {
         if (isCarryingTomato()) {
             if (isAtShip()) {
                 dropTomato();
+            } else if (isAtWater()) {
+                turnRandomDegrees(15, 90);
             } else {
-                turnTowardsHome();
+                turnTowardsHome(30);
             }
         }
+        if (isWaitingForAssistance()) {
+            waitForTomatoLoadingAssistance();
+        }
+        if (isAtWater() || isAtWorldEdge()) {
+            turnRandomDegrees(15, 90);
+        }
+
         move();
+
     }
+
 
     private Boolean isToLeft(Actor actor) {
         int currentRotation = getRotation();
